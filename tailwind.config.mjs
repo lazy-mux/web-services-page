@@ -6,6 +6,9 @@ export default {
     extend: {
       colors: {
         wine: "#872341",
+        "wine-secondary": "#22092C",
+        "wine-secondary-dark": "#ecd9f3",
+        translucent: "#F05941",
       },
     },
   },
