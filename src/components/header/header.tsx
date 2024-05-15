@@ -13,8 +13,8 @@ export default function Header() {
   const [selectedNavItem, setSelectedNavItem] = useState(NavItem.home);
 
   return (
-    <header className="absolute top-0 left-0 w-full">
-      <div className="flex flex-wrap sm:justify-between items-center gap-2 mx-auto max-w-screen-lg px-4 py-2">
+    <header className="absolute top-0 left-0 w-full px-4 py-2">
+      <div className="flex flex-wrap sm:justify-between items-center gap-2 mx-auto max-w-screen-lg">
         <h2 className="icon-bug_report text-2xl flex-1 sm:flex-none text-wine"></h2>
         <nav className="relative flex gap-2 items-center">
           <button
