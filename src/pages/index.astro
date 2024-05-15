@@ -3,10 +3,12 @@ import MainLayout from "../layouts/main.layout.astro";
 import Header from "../components/header/header";
 import Home from "../components/home/home.astro";
 import Services from "../components/services/services.astro";
+import Contact from "../components/contact/contact";
 ---
 
 <MainLayout title="Services | Gusstavo">
   <Header client:only />
   <Home />
   <Services />
+  <Contact client:only />
 </MainLayout>
