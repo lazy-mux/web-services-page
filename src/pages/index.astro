@@ -10,5 +10,10 @@ import Contact from "../components/contact/contact";
   <Header client:only />
   <Home />
   <Services />
-  <Contact client:only />
+  <Contact client:load />
+  <footer
+    class="bg-neutral-50 dark:bg-neutral-950 h-60 grid place-items-center overflow-hidden"
+  >
+    <span class="icon-bug_report text-[400pt] -translate-y-24 opacity-5"></span>
+  </footer>
 </MainLayout>

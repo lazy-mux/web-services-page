@@ -40,6 +40,26 @@ const { title } = Astro.props as Props;
       font-optical-sizing: auto;
       box-sizing: border-box;
     }
+    body {
+      &::-webkit-scrollbar {
+        width: 16px;
+      }
+      &::-webkit-scrollbar-track {
+        background: rgb(228 228 231);
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgb(212 212 216);
+        border-radius: 8px;
+      }
+    }
+    html.dark body {
+      &::-webkit-scrollbar-track {
+        background: rgb(39 39 42);
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgb(63 63 70);
+      }
+    }
   </style>
 
   <script>

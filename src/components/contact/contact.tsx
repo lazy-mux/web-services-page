@@ -18,7 +18,7 @@ export default function Contact() {
   });
 
   return (
-    <section id="contact" className="w-full px-5 pt-4 pb-20">
+    <section id="contact" className="w-full px-5 pt-16 pb-20">
       <div className="w-full max-w-5xl mx-auto grid md:flex gap-20 md:gap-20">
         <div className="flex-1 grid gap-20">
           <div className="grid gap-4">
@@ -26,8 +26,9 @@ export default function Contact() {
               Contact Sales
             </h3>
             <p className="text-justify text-pretty">
-              At AC!D-OS, we are committed to helping you achieve your business
-              objectives effectively and efficiently.
+              At <span translate="no">AC!D-OS</span>, we are committed to
+              helping you achieve your business objectives effectively and
+              efficiently.
             </p>
           </div>
           <div className="flex gap-4">
@@ -38,7 +39,7 @@ export default function Contact() {
               <h4 className="font-bold text-xl tracking-wider">
                 Sales support
               </h4>
-              <p className="text-justify">
+              <p className="text-justify text-wine-secondary dark:text-wine-secondary-dark">
                 Our sales team is trained to understand your specific needs and
                 offer you solutions adapted to your project.
               </p>
@@ -60,7 +61,7 @@ export default function Contact() {
               <h4 className="font-bold text-xl tracking-wider">
                 Technical support
               </h4>
-              <p className="text-justify">
+              <p className="text-justify text-wine-secondary dark:text-wine-secondary-dark">
                 Our sales team is trained to understand your specific needs and
                 offer you solutions adapted to your project.
               </p>
