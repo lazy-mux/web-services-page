@@ -4,13 +4,15 @@
 
 <section
   id="home"
-  class="w-full min-h-screen flex flex-col px-5 pt-28 pb-8 sm:pb-0 gap-20"
+  class="w-full max-w-full overflow-hidden flex flex-col px-5 pt-[210px] gap-40 md:max-lg:pt-[125px]"
 >
-  <div class="flex-1 grid content-center gap-2">
+  <div id="home-title" class="flex-1 grid content-center gap-2">
     <h1
-      class="text-2xl flex flex-wrap sm:block sm:text-center md:text-3xl xl:text-4xl"
+      class="text-2xl flex flex-wrap gap-[0.4ch] sm:justify-center md:text-3xl xl:text-4xl"
     >
-      Make your pages&nbsp;<b class="text-wine">an experience</b>
+      Make your pages<div id="title-text" class="grid tracking-wider text-wine">
+        an experience
+      </div>
     </h1>
     <h2
       class="sm:text-center text-wine-secondary dark:text-wine-secondary-dark md:text-xl xl:text-2xl"
@@ -20,7 +22,8 @@
   </div>
   <div class="grid gap-10 pb-12">
     <p
-      class="text-justify sm:text-center text-pretty max-w-[38rem] mx-auto opacity-75"
+      id="home-p"
+      class="text-justify [&>*]:bottom sm:text-center text-pretty max-w-[38rem] mx-auto opacity-60"
     >
       Welcome to <span translate="no">AC!D-OS</span>, where we transform simple
       pages web in unforgettable digital experiences. We are dedicated to
@@ -28,18 +31,120 @@
       and They turn visitors into engaged customers.
     </p>
     <cite
-      class="text-wine-secondary dark:text-wine-secondary-dark text-center opacity-60"
+      id="invitation-text"
+      class="text-wine-secondary dark:text-wine-secondary-dark text-center opacity-60 flex flex-wrap justify-center items-center gap-[0.5ch]"
     >
-      Are you ready to take your online presence to the next level?
+      {
+        "Are you ready to take your online presence to the next level?"
+          .split(" ")
+          .map((text) => <p class="inline-block">{text}</p>)
+      }
     </cite>
     <div
-      class="flex items-center justify-center gap-1 text-xl text-translucent sm:hidden"
+      class="flex items-center justify-center gap-1 text-xl text-translucent"
     >
-      <div class="icon-mouse"></div>
+      <div class="icon-mouse hidden md:block"></div>
       <div class="relative grid place-items-center">
-        <div class="icon-keyboard_arrow_down absolute translate-y-1"></div>
-        <div class="icon-keyboard_arrow_down absolute -translate-y-1"></div>
+        <div
+          id="home-arrow-1"
+          class="icon-keyboard_arrow_down absolute -translate-y-1"
+        >
+        </div>
+        <div
+          id="home-arrow-2"
+          class="icon-keyboard_arrow_down absolute translate-y-1"
+        >
+        </div>
       </div>
     </div>
   </div>
 </section>
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  // animate title
+  const titleText: HTMLElement | null = document.getElementById("home-title");
+  if (titleText) {
+    gsap.to(titleText, {
+      scrollTrigger: {
+        trigger: titleText,
+        start: "top top+=50",
+        end: "bottom+=20 52px",
+        // markers: true,
+        scrub: true,
+      },
+      ease: "none",
+      y: 100,
+    });
+  }
+
+  // animate "p"
+  const pText: HTMLElement | null = document.getElementById("home-p");
+  if (pText) {
+    gsap.to(pText, {
+      scrollTrigger: {
+        trigger: pText,
+        start: "top-=200 top+=200",
+        end: "bottom 52px",
+        toggleActions: "none reset reset reset",
+        // markers: true,
+        scrub: true,
+      },
+      opacity: 1,
+    });
+  }
+
+  // animate inivitation
+  const invitationText: HTMLElement | null =
+    document.getElementById("invitation-text");
+  if (invitationText?.children) {
+    const tl = gsap.timeline({ delay: 1, repeat: -1, repeatDelay: 5 });
+
+    const nodes = [...invitationText.children] as HTMLElement[];
+
+    nodes.forEach((node, i) => {
+      tl.to(node, {
+        duration: 0.1,
+        ease: "power1.in",
+        scale: 1.05,
+        fontWeight: "bold",
+        y: -2,
+      });
+      tl.to(node, {
+        duration: 0.1,
+        ease: "power1.out",
+        scale: 1,
+        y: 0,
+      });
+      tl.to(node, {
+        duration: 0,
+        fontWeight: "400",
+      });
+    });
+  }
+
+  // animate arrows
+  const arrow1: HTMLElement | null = document.getElementById("home-arrow-1");
+  const arrow2: HTMLElement | null = document.getElementById("home-arrow-2");
+  if (arrow1 && arrow2) {
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+    tl.to(arrow1, {
+      duration: 0.1,
+      rotateZ: "20deg",
+    });
+    tl.to(arrow2, {
+      duration: 0.1,
+      rotateZ: "-20deg",
+    });
+    tl.to(arrow1, {
+      duration: 0.1,
+      rotateZ: "0deg",
+    });
+    tl.to(arrow2, {
+      duration: 0.1,
+      rotateZ: "0deg",
+    });
+  }
+</script>
