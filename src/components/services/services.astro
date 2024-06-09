@@ -2,7 +2,7 @@
 
 ---
 
-<section id="services" class="w-full px-5 pt-16 pb-12">
+<section id="services" class="w-full px-5 pt-4 pb-12">
   <h2
     class="max-w-5xl mx-auto text-4xl font-bold tracking-wider opacity-15 mb-4"
   >
@@ -16,43 +16,80 @@
     >
       <div
         translate="no"
-        class="flex-1 hover:flex-[10] transition-all tracking-wider grid content-center justify-center text-center font-bold text-4xl text-wine"
+        class="flex-1 hover:flex-[10] transition-all tracking-wider grid content-center justify-center text-center font-bold text-4xl text-wine [&:hover>*:nth-child(1)]:hidden [&:hover>*:nth-child(2)]:grid"
       >
-        <span>FRONT</span><span>END</span>
+        <div class="grid">
+          <span>FRONT</span><span>END</span>
+        </div>
+
+        <div class="hidden gap-8">
+          <div>
+            <i class="devicon-astro-plain"></i>
+            <i class="devicon-react-original"></i>
+            <i class="devicon-vuejs-plain"></i>
+          </div>
+          <button
+            class="bg-wine text-zinc-100 dark:text-zinc-950 rounded-md px-2 text-lg"
+            >Ver mas</button
+          >
+        </div>
       </div>
 
-      <img
-        class="block bottom-full w-full object-cover pointer-events-none translate-y-1"
-        src="./waves-0.svg"
-        alt="waves"
-      />
+      <div
+        id="services-waves"
+        class="block bottom-full w-full h-16 object-cover pointer-events-none translate-y-1"
+      >
+      </div>
       <div
         translate="no"
-        class="flex-1 hover:flex-[10] transition-all relative h-45% bg-wine text-zinc-100 tracking-wider grid content-center justify-center text-center font-bold text-4xl"
+        class="flex-1 hover:flex-[10] transition-all relative h-45% bg-wine text-zinc-100 tracking-wider grid content-center justify-center text-center font-bold text-4xl [&:hover>*:nth-child(1)]:hidden [&:hover>*:nth-child(2)]:grid"
       >
-        <span>BACK</span><span>END</span>
+        <div class="grid">
+          <span>BACK</span><span>END</span>
+        </div>
+        <div class="hidden gap-8">
+          <div>
+            <i class="devicon-django-plain"></i>
+            <i class="devicon-express-original"></i>
+            <i class="devicon-spring-original"></i>
+          </div>
+          <button class="bg-neutral-100 text-wine rounded-md px-2 text-lg"
+            >Ver mas</button
+          >
+        </div>
       </div>
     </div>
     <div
-      class="bg-wine icon-bug_report grid place-items-center text-zinc-100 text-9xl overflow-hidden"
+      class="relative bg-wine grid place-items-center text-zinc-100 overflow-hidden"
     >
+      <p
+        id="services-label-bug"
+        class="absolute tracking-wider font-bold text-xl bottom-full"
+      >
+        AC!D-OS
+      </p>
+      <div id="services-icon-bug" class="icon-bug_report text-9xl"></div>
     </div>
     <div
       class="relative bg-neutral-50 dark:bg-neutral-950 text-wine tracking-wider font-bold grid justify-center items-center content-center text-center overflow-hidden"
     >
       <span
+        id="services-icon-memory"
         class="icon-memory absolute w-full h-full grid place-items-center opacity-5 dark:opacity-10 text-[180pt] md:max-lg:text-[140pt]"
       ></span>
       <span class="relative text-3xl">Automation</span>
       <span translate="no" class="relative text-5xl">script</span>
-      <span class="relative icon-bolt mt-4 text-translucent text-6xl"></span>
+      <span
+        id="services-icon-bolt"
+        class="relative icon-bolt mt-4 text-translucent text-6xl"></span>
     </div>
     <div
       translate="no"
       class="relative sm:col-start-1 sm:col-end-3 md:col-start-2 md:col-end-4 bg-neutral-50 dark:bg-neutral-950 grid gap-2 justify-center items-center content-center text-center text-wine overflow-hidden"
     >
       <span
-        class="icon-security absolute -right-[60pt] text-[180pt] opacity-5 dark:opacity-10 sm:max-md:!opacity-100 lg:!opacity-100"
+        id="services-icon-shield"
+        class="icon-security origin-[bottom_center] absolute -right-[60pt] text-[180pt] opacity-5 dark:opacity-10 sm:max-md:!opacity-100 lg:!opacity-100"
       ></span>
       <span class="relative text-4xl tracking-wider"
         ><b>Ethical hacking</b></span
@@ -62,3 +99,111 @@
     </div>
   </div>
 </section>
+
+<style>
+  #services-waves {
+    background-image: url("./waves-0.svg");
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  // waves animations
+  const waves: HTMLElement | null = document.getElementById("services-waves");
+  if (waves) {
+    gsap.to(waves, {
+      duration: 1,
+      repeat: -1,
+      yoyo: true,
+      yoyoEase: true,
+      backgroundRepeat: "repeat",
+      backgroundPositionX: "100px",
+    });
+  }
+
+  // bug animations
+  const labelBug: HTMLElement | null =
+    document.getElementById("services-label-bug");
+  const iconBug: HTMLElement | null =
+    document.getElementById("services-icon-bug");
+  if (labelBug && iconBug) {
+    gsap.to(labelBug, {
+      scrollTrigger: {
+        trigger: labelBug,
+        start: "bottom+=50 center",
+        end: "bottom+=100px center",
+        // markers: true,
+        scrub: true,
+      },
+      y: "+=250%",
+      scale: 1.5,
+      letterSpacing: "4px",
+    });
+    gsap.to(iconBug, {
+      scrollTrigger: {
+        trigger: iconBug,
+        start: "top center",
+        end: "bottom center",
+        // markers: true,
+        scrub: true,
+      },
+      y: 100,
+      scale: 2.8,
+    });
+  }
+
+  // "automation script" animations
+  const iconMemory: HTMLElement | null = document.getElementById(
+    "services-icon-memory"
+  );
+  const iconBolt: HTMLElement | null =
+    document.getElementById("services-icon-bolt");
+  if (iconMemory && iconBolt) {
+    gsap.fromTo(
+      iconMemory,
+      {
+        y: "-300px",
+      },
+      {
+        duration: 3,
+        repeat: -1,
+        y: "300px",
+      }
+    );
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+    tl.to(iconBolt, {
+      textShadow: "0 0 10px rgb(240 89 65)",
+      scale: 1.2,
+    });
+    tl.to(iconBolt, {
+      textShadow: "0 0 10px transparent",
+      scale: 1,
+    });
+  }
+
+  // "ethical hacking" animations
+  const iconShield: HTMLElement | null = document.getElementById(
+    "services-icon-shield"
+  );
+  if (iconShield) {
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+    tl.to(iconShield, {
+      duration: 0.2,
+      ease: "sine.in",
+      rotateZ: "5deg",
+    });
+    tl.to(iconShield, {
+      duration: 0.2,
+      ease: "sine.inOut",
+      rotateZ: "-5deg",
+    });
+    tl.to(iconShield, {
+      duration: 0.2,
+      ease: "sine.out",
+      rotateZ: "0",
+    });
+  }
+</script>
