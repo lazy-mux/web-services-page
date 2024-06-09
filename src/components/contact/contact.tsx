@@ -132,7 +132,8 @@ export default function Contact() {
               <span className="icon-github"></span>
               &nbsp;Github/lazy-mux
             </a>
-            <a href="#" className="flex gap-2 items-center text-translucent">
+            <a href="https://www.linkedin.com/in/gusstavo-renteria-3b5960312" target="_blank"
+              rel="noreferrer noopener" className="flex gap-2 items-center text-translucent">
               <span className="icon-linkedin"></span>
               &nbsp;Linkedin/gusstavo-renteria
             </a>

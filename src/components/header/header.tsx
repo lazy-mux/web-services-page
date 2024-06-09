@@ -35,7 +35,9 @@ export default function Header() {
     >
       <div className="flex flex-wrap sm:justify-between items-center gap-2 mx-auto max-w-screen-lg">
         <h2 className="relative flex-1 sm:flex-none">
-          <span className="icon-bug_report text-wine text-2xl w-9 h-9 transition bg-neutral-100/50 dark:bg-neutral-900/50 grid place-items-center rounded-full"></span>
+          <a href="#home">
+            <span className="icon-bug_report text-wine text-2xl w-9 h-9 transition bg-neutral-100/50 dark:bg-neutral-900/50 grid place-items-center rounded-full"></span>
+          </a>
         </h2>
         <nav className="relative flex gap-2 items-center">
           <button
@@ -58,13 +60,13 @@ export default function Header() {
             <div className="w-0 h-0 border-solid border-t-[16px] border-t-transparent border-r-[16px] border-r-neutral-200 dark:border-r-neutral-800 transition ml-auto translate-y-1 sm:hidden"></div>
             <ul
               onClick={() => setActiveMenu(false)}
-              className="bg-neutral-200 dark:bg-neutral-800 text-md sm:!bg-transparent sm:flex sm:gap-2 transition-[background] sm:transition-none"
+              className="bg-neutral-200 dark:bg-neutral-800 text-md sm:!bg-transparent sm:flex sm:gap-2 transition-[background] sm:transition-none rounded-s-sm rounded-b-sm"
             >
               <li>
                 <a
                   className={`${
-                    selectedNavItem == NavItem.home ? "text-wine" : ""
-                  } h-10 grid items-center px-5 sm:h-auto sm:px-3 tracking-wider`}
+                    selectedNavItem == NavItem.home ? "text-wine font-semibold sm:bg-neutral-500/10" : ""
+                  } rounded-lg h-10 grid items-center px-5 sm:h-auto sm:px-3 tracking-wider`}
                   href="#home"
                 >
                   Home
@@ -73,8 +75,8 @@ export default function Header() {
               <li>
                 <a
                   className={`${
-                    selectedNavItem == NavItem.services ? "text-wine" : ""
-                  } h-10 grid items-center px-5 sm:h-auto sm:px-3 tracking-wider`}
+                    selectedNavItem == NavItem.services ? "text-wine font-semibold sm:bg-neutral-500/10" : ""
+                  } rounded-lg h-10 grid items-center px-5 sm:h-auto sm:px-3 tracking-wider`}
                   href="#services"
                 >
                   Services
@@ -83,8 +85,8 @@ export default function Header() {
               <li>
                 <a
                   className={`${
-                    selectedNavItem == NavItem.contact ? "text-wine" : ""
-                  } h-10 grid items-center px-5 sm:h-auto sm:px-3 tracking-wider`}
+                    selectedNavItem == NavItem.contact ? "text-wine font-semibold sm:bg-neutral-500/10" : ""
+                  } rounded-lg h-10 grid items-center px-5 sm:h-auto sm:px-3 tracking-wider`}
                   href="#contact"
                 >
                   Contact
